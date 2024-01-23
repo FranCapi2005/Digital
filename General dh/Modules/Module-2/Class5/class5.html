@@ -1,0 +1,55 @@
+Curso N.5 Curso Programación - Web Full Stack 
+
+Clase 19-09-2023
+
+*Funciones
+Listado de procedimientos que se va a ejecutar cuando sea necesario, estas pueden ser: Declaradas o Expresadas (ambas utilizan la palabra “function”)
+
+Función Expresada
+Es aquella que se asigna como valor a una variable. Esta tipo de función se carga únicamente cuando el interprete alcanza la linea de código dónde se encuentra la función.
+Ejemplo:
+
+let sumar = function () {…}
+ 
+Función Declarada
+Es aquella que recibe un nombre formal y no se asigna como valor a una variable. Este tipo de funciones se cargan antes de que cualquier código sea ejecutado.
+Ejemplo:
+
+function sumar () {..}
+
+Scope
+Alcance que llega a tener una variable
+
+Scope Local
+Se da cuando existen variables declaradas exclusivamente dentro de una función. Fuera de la función la variable es inexistente.
+Ejemplo:
+
+function hola () {
+	// variable local
+	let saludo = “Hola ¿qué tal?”
+	return saludo;
+}
+console.log(hola()); // “Hola ¿qué tal?”
+console.log(saludo); // undefined variable
+
+Scope Global
+Es cuando las variables se declaran fuera de cualquier función. Teniendo así un alcance a ellas en cualquier lugar del código, incluso dentro de funciones.
+
+let elMejorLenguaje = “Javascript, es lo más”;
+function estoyAprendiendo () {
+	return elMejorLenguaje;
+}
+Console.log(estoyAprendiendo()); // “Javascript, es lo más”
+
+
+Return = Sirve para devolver al exterior el resultado del proceso que estamos ejecutando.Este mismo corta la ejecución de la función.
+ 
+Arrow Function
+Es más fácil de utilizar que las funciones normales, estas Arrow functions no usan la palabra reservada “function” y es necesario que sean asignadas como valor de una variable. Se utiliza el “=>”.
+Ejemplo:
+
+let elDoble = num => num * 2;
+elDoble(6)
+
+CallBacks
+Es una función que se pasa como parámetro de otra función. La función que lo recibe es quien se encarga de ejecutarla cuando sea necesario.

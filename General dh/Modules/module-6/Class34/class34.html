@@ -1,0 +1,115 @@
+Curso N.34 Curso Programación - Web Full Stack
+
+
+*BASES DE DATOS = pieza de software que nos permiten "Modelar" y "Guardar" datos importantes, tambien vamos a poder consultar...
+
+Estan establecidas en un "servidor" pero para poder contactar una base de datos es necesario lo siguiente:
+    1- Nombre de la Base de Datos
+    2- En que direccion Ip esta 
+    3- Que tipo de Base de Datos es 
+    4- Usuario
+    5- Contraseña 
+    6- Puerto 
+
+Sistema SQL = "Structured Query Language"
+Esto nos va a permitir interactuar con la base de datos para interactuar, analizar y guardar los datos 
+
+Dentro de SQL vamos a tener tablas las cuales se van a dividir en tipos y van a tener informacion especifica.
+
+Toda base de datos siempre tiene una "Clave Primaria" o "Primary Key == PK", esto es un dato especifico y unico para cada una de las filas, y es lo que nos permite definir univocamente una fila de la otra... Esta clave nunca se repite y es unica y exclusiva
+
+*Diagrama relacional = es una abstraccion de lo que se conoce como tabla fisica (tabla de SQL)
+
+EJEMPLO: 
+        dhPelis
+            \__ Generos
+            \__ Peliculas
+            \__ Actores
+
+Relaciones, esto indica como se van a relacionar las tablas. dentro de esto existen 4 tipos:
+        1- Uno a Muchos 
+        2- Muchos a Uno 
+        3- Uno a Uno
+        4- Muchos a Muchos 
+
+-Uno a Muchos == ej: "UN" genero de pelicula puede estar asociado a "MUCHAS" peliculas, pero "UNA" pelicula a "UN" solo genero.
+
+En la tabla agregar un nuevo campo que va a representar a la misma, ej: tabla = Peliculas con tabla "genero_id".
+
+Clave Foranea = clave que apunta a claves primarias de otras tablas
+
+Tabla intermedia / tabla Pivot == tabla la cual relaciona 2 tablas, ej:
+    - Tabla 1 = Peliculas
+    - Tabla 2 = Actores 
+    - Tabla Pivot = PeliculasActores ==    
+                                        *id(PK)
+                                        *pelicula_id(FK)
+                                        *actor_id(FK)
+
+
+
+TIPOS DE DATOS:
+
+-Datos numericos: (Tiny, Small y Big tienen como diferencia la cantidad maxima de valores a poder agregar)
+    - INT
+    - TINYINT
+    - SMALLINT
+    - BIGINT
+
+    Subtipos Numericos:
+    - DECIMAL
+    - FLOAT
+
+    Extra:
+    - BOOLEAN (NO RECOMENDADO)
+
+-Datos Texto:
+    - CHAR (viene acompañado de un numero exacto de caracteres a usar)
+    - VARCHAR (Viene acompañado de un numero el cual sera el maximo de caracteres a usar)
+    - TEXT
+
+-Datos Fecha:
+    - DATE (solo fechas) (YYYY-MM-DD) == (Año-Mes-Dia)
+    - TIME (solo horarios)
+    - DATETIME (fechas y horarios)
+
+
+Restricciones (se puede aclarar que una columna sea clave primaria, etc), NN ("not null" es una restriccion la cual se encarga de prohibir que el dato quede vacio), UN ("unique" aclara columnas que no se pueden repetir) y por ultimo DEFAULT y AUTO_INCREMENT
+
+
+*CONSTRAINTS == son restricciones para limitar el tipo de dato que puede recibir una columna en una tabla para asegurar su consistencia.
+"Estas restricciones NO reemplazan las validaciones de datos que podamos hacer en nuestra aplicacion".
+
+LOS CONSTRAINTS mas comunes son:
+    -NOT NULL == evita insertar valores nulos en la columna seleccionada. (OPTATIVO)
+
+    -UNIQUE == no permite tener dos o más registros con los mismos(NO SE INSERTEN VALORES REPETIDOS EN UNA COLUMNA), no va a haber 2 filas en la misma tabla. (OPTATIVO)
+
+    -PRIMARY KEY == campo o seccion de campos que es univoco (unico e irrepetible), esta suele representarse como "id". (OBLIGATORIO QUE EXITA MINIMO UNA "PK" EN LA TABLA)
+
+    -DEFAULT == valor por defecto si el valor es nulo o no esta presente al momento de querer almacenar el registro en la bases de datos. (EJEMPLO: imagen default o por defecto que se agrega automaticamente en el caso de que el usuario no coloque la imagen de avatar a usar en su cuenta)
+
+
+CREATE TABLE == nos permite crear nueva tabla en el cual se tiene que especificar "nombre de tabla", "columnas", "tipos" y "constraints"
+
+    Ej: CREATE TABLE peliculas_antiguas
+
+
+DROP TABLE == nos permite eliminar una tabla o cualquier elemento.
+
+    Ej: DROP TABLE peliculas_antiguas
+
+
+ALTER TABLE == es flexible segun la modificacion que le querramos dar a la tabla, no es lo mismo el querer crear una columna, que el borrar una columna, que el modificar los tipos de una columna. (nos permite alterar una tabla).
+
+    Ej: ALTER TABLE peliculas_antiguas
+
+    <!-- 
+        CREATE TABLE `movies_db`.`directors`(
+
+            `id` INT NOT NULL AUTO_INCREMENT,
+            `name` VARCHAR(100) NOT NULL,
+            PRIMARY KEY (`id`)
+     -->
+
+FOREIGN KEYS == es una constraint que permite que guarde como valor un dato particular que referencia a otra tabla y permite relacionar estas tablas entre si... (se suele relacionar con la PRIMARY KEY de la otra tabla)

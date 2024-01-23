@@ -1,0 +1,1 @@
+INSERT INTO generos (id, nombre) VALUES (26, 'Cumbia');

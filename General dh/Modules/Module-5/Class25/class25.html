@@ -1,0 +1,102 @@
+Curso N.25 Curso Programación - Web Full Stack 
+
+
+*Patron de diseño = (conjunto de reglas que definen la arquitectura de un sistema) MVC
+*MVC (permite crear proyectos escalables y modulares (Modelos, vistas y controladores, c/u esta aisalada el resto))
+
+Modelos.Vistas.Controladores == M.V.C
+
+        -Vistas = es la capa que interactua con el cliente. (interactua con el servidor, siendo el usuario el cual solicita informacion y datos al mismo.)
+        -Controladores = responde a las acciones o eventos segun las vistas y modelos.
+        -Modelos = relaciona los datos de la aplicacion. (este busca la informacion y se la pasa al controlador)
+
+
+*Controladores (son pequeños codigos que se encargan de atender a los pedidos del cliente, mas organizado y da proligidad y mayor escalabilidad),(modulo de node)
+// carpeta "controllers" 
+
+
+*Rutas parametrizadas 
+
+        Ejemplo: 
+                <script>
+
+                app.get('/productos/:id', function(req, res){
+                        // codigo
+                })
+
+                </script>
+
+/producto/:id == Esto sirve para que cuando el cliente entre en /productos/2 funcione de la misma manera que si entre en /productos/150, permitiendo tener 1 sola ruta para demasiados productos. Si queres que el parametro sea optativo hay que colocar un "?" al final del codigo.
+
+req.params == es un objeto literal con "propiedad / valor" 
+
+                <script>
+                        app.get('/productos/:id', function(req, res){
+                                let idProductos = req.params.id;
+                                res.send('Elegiste el producto' + idProductos)
+                        })
+
+                </script>
+
+
+*Sistema de Routeo
+Crear una carpeta llamda "Routes" y se crea un archivo llamado "productos.js" en el que se crearan cada una de las rutas para las funcionalidades de los productos. (modulo que se va a exportar y se pedira en el "ENTRY POINT")
+
+(SIEMPRE REQUERIR EXPRESS Y CREAR UNA VARIABLE .ROUTER)
+        Ejemplo:
+                <script>
+                        const express = require('express');
+
+                        const router = express.Router();
+
+                        router.get('/', (req, res) => {
+                                //Codigo
+                        });
+
+                        router.get('/crear', (req, res) => {
+                                //Codigo
+                        });
+
+                        router.get('/productos/:id', (req, res) => {
+                                //Codigo
+                        })
+
+                        module.exports = router;
+                </script>
+
+Luego de hacer esto en el "ENTRY POINT" se utiliza el siguiente codigo para requerir el Router:
+
+                <script>
+                        app.use('/productos', rutasProductos)
+                </script>
+
+
+*Generadores en express
+
+-instalarlo                                         =>             npm install express-generator -g
+
+-Crear un proyecto de node con express              =>             express myApp --ejs
+ 
+-ejecutar                                           =>             npm install
+
+-Para correr el proyecto hay que ejecutar           =>             nodemon bin/www
+
+-Ingresar al                                        =>             https://localhost:3000
+
+ESTRUCTURA DE myApp
+
+                -________app.js
+                -________package.json
+                -________bin
+                        \________wwww
+                -________public 
+                        \________images
+                        \________javascripts
+                        \________stylesheets
+                                \________style.css
+                -________routes
+                        \________index.js 
+                        \________users.js
+                -________views
+                        \________error.ejs
+                        \________index.ejs

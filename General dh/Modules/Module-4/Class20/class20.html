@@ -1,0 +1,50 @@
+Curso N.20 Curso Programación - Web Full Stack 
+
+
+*FlexBox = Metodologia de posicionamiento, (se declaran sobre el contenedor padre del elemento a manipular)
+
+*Ejes de FlexBox (2 ejes, Horizontal (x == "Main axis") y Vertical (y == "Cross axis") (esta es la configuracion por defecto pero puede cambiarse))
+
+
+PREDETERMINADO
+
+                                                    <!-- CROSS AXIS -->
+                                     /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯0¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\  <!-- CROSS AXIS START -->
+                                    |   /------  |          |    /¯¯¯¯¯    \   /      |   
+                                    |  |         |          |   |_____      \ /       |   
+                                    |  |-----    |          |   |           / \       |   
+                                    |  |         |______    |    \_____    /   \      | 
+                 <!-- MAIN AXIS --> 0----------------------------------------------------  
+                                    |                       |                         |   
+                                    |                       |                         |   
+                                    |                       |                         |   
+                                    |                       |                      /¯¯¯¯¯  <!-- CROSS AXIS END -->
+             <!-- MAIN AXIS START -->\______________________|_____________________|__/    
+                                                            |                     |
+                                                                               <!-- MAIN AXIS END -->
+
+
+CAMBIO
+
+                                                    <!-- MAIN AXIS -->
+                                      /¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯0¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯\  <!-- MAIN AXIS START -->
+                                     |   /------  |          |    /¯¯¯¯¯    \   /      |   
+                                     |  |         |          |   |_____      \ /       |   
+                                     |  |-----    |          |   |           / \       |   
+                                     |  |         |______    |    \_____    /   \      | 
+                 <!-- CROSS AXIS --> 0----------------------------------------------------  
+                                     |                       |                         |   
+                                     |                       |                         |   
+                                     |                       |                         |   
+                                     |                       |                      /¯¯¯¯¯  <!-- MAIN AXIS END -->
+             <!-- CROSS AXIS START -->\______________________|_____________________|__/    
+                                                             |                     |
+                                                                           <!-- CROSS AXIS END -->
+
+
+flex-direction                                       <!-- determina la dirección en que se ordenarán los elementos en el espacio. Esto puede ser de:
+                                                            izquierda a derecha (row) (Predeterminado)
+                                                            derecha a izquierda (row-reverse)
+                                                            arriba a abajo (column)
+                                                            abajo a arriba (column-reverse) -->
+

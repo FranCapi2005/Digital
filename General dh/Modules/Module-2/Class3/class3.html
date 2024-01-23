@@ -1,0 +1,173 @@
+Curso N.3 Curso Programación - Web Full Stack 
+
+Clase 12-09-2023
+
+-JavaScript: es un lenguaje de scripting que se utiliza junto con otros lenguajes para desarrollar aplicaciones web.
+
+El programador puede controlar una o varias aplicaciones de terceros mediante scripts. ¿Y qué es un script?  "Un script es un fragmento de código diseñado para realizar pequeñas acciones en una página web.
+
+
+*Variable: Son un espacio de memoria donde se almacena un dato que podemos reutilizar a futuro.
+(Caja donde se pueden guardar datos, números, textos, instrucciones, etc..)
+
+-Podemos decir que las variables se dividen en tres partes: 
+* 		La información que se va a almacenar
+* 		El tipo de información
+* 		Nombre de la variable
+
+Palabras Reservadas 
+
+Var
+Varios Formatos: (nombre que se le dará a la variable) 
+-Camel Case:		telefonoMadre
+-Snake Case:		telefono_madre
+-Kebab Case:		telefono-madre
+
+-Valor de la Variable (dato especifico que vamos a guardar)
+Operador de Asignación (=)
+
+Ejemplo:
+>_ var telefonoMadre = 1123456789
+
+Let
+Pertenece exclusivamente a un bloque de ejecución (Todo aquel código que se encuentra dentro de las llaves)
+
+Ejemplo:
+
+//Bloque de Ejecución 1
+if (true) {
+     let saludo ="hola";
+    console.log(saludo); //hola
+}
+
+//Bloque de Ejecución 2
+if (true) {
+     let saludo = "chau";
+     console.log(saludo); //chau
+}
+
+En este ejemplo existen 2 bloques de ejecución, el del primer IF y el del segundo IF, si una variable declarada con “let” se encuentra dentro de un pueden existir 2 variables llamadas igual y nunca se van a sobrescribir, cosa que si pasaría con “var”
+
+Variable con “let” no puede ser redefinida en un mismo bloque de ejecución
+
+Const (constante)
+Mismas características que “let” pero JavaScript no nos permitirá nunca cambiar su valor asignado. (Es una constante a travez de todo nuestro archivo de JavaScript)
+
+
+*Tipos de Datos: En JavaScript los tipos de datos te permiten conocer las características y funcionalidades que estarán disponibles.
+
+Datos Number 
+Representación de un Numero Entero o Decimal
+
+let edad = 20;
+let precio = 160.65;
+(Se utiliza punto ya que JavaScript esta escrito en ingles y en ingles separamos los decimales con punto)
+
+Datos Strings (Cadenas de texto)
+Textos alfanuméricos, y pueden tener cualquier longitud
+
+Let saludo = “hola gente”;
+
+Datos Booleanos 
+Un dato booleano es un dato “True” o “False”, estos datos no se encierran dentro de comillas (pasaría de booleano a string)
+
+
+Datos Not a Number (NaN)
+Especificar cuando este dato no es un numero en si, no es un tipo de texto ni tampoco un dato booleano
+
+Ejemplo: Operación matematica errada
+
+Datos Null
+Dar un valor vacío o desconocido.
+
+let cantidaPasajerosBondi = full;
+(Desconocemos cuantos exacta de pasajeros hay en el colectivo)
+
+Datos Undefined
+No se asocia en si a una variable, viene implícito si es que a la variable no se le asigno un valor puntualmente
+
+Datos Objeto Literal
+Se utilizan las {} y se le asigna una Clave: valor. (se puede almacenar mucha información en una misma variable gracias a este tipo de datos
+
+let miComputadora = {
+    marca: 'HP',
+    modelo: 2019,
+    estaEncendida: true
+};
+
+Datos Array (Lista o Arreglo)
+Nos permite almacenar varios tipos de daros en una sola variable, este tipo de datos no tiene Claves, y tiene indices números y comienzan en el numero cero.
+
+let seriesFavoritas = [ "Manifest", "Flash", "Spiderman"];
+(Los indices del array son la posición en donde se almacena un dato particular) “Manifest” esta en el indice 0, mientras que “Spiderman” esta en el indice 2
+
+typeof = escribir typeof (variable a identificar) 
+
+*Operadores: un operador es aquella porción de código que nos permite hacer ecuaciones aritméticas (comparaciones / concatenaciones / etc).
+
+Operador de Asignación (=), sirve para dar valor a una variable y que pueda almacenar su información.
+
+Operadores Aritméticos:
+	El símbolo (+) nos permite realizar sumas
+	El símbolo (-) nos permite realizar restas
+	El símbolo (*) nos permite realizar multiplicaciones
+	El símbolo (/) nos permite realizar divisiones
+
+Js nos da un Operador Aritmético especial llamado Modulo (%) y sirve para retornar el resto o residuo de una division. 
+Ejemplo:
+5%2 = 1
+4%2 = 0
+
+Operadores de Incremento y Decremento
+Objetivo: restar o sumar 1 unidad a un nº determinado.
+
+	-Incremento: ++
+	-Decremento: - -
+
+Operadores de Comparación
+
+	-Simple: == (preguntara si un valor es igual a otro)
+	-Estricta: (también preguntara si un valor es igual a otro y ademas pregunta si el tipo de dato es el mismo)
+
+Ejemplo:
+5 === “5” // False (uno es un number y otro es string)
+
+5>3 // true
+15>=26 // false
+4<20 // true
+4<=2 // false
+(Antes va el símbolo < o > y después =)
+
+Operador Concatenación
+Se utiliza con el símbolo (+), y sirve para unir 2 o mas cadenas de texto en 1 sola.
+
+Ejemplo:
+Let nombre = “Juana”
+Let apellido = “De Arco”
+Nombre + “ " + apellido
+
+*Operadores Lógicos
+Unir sentencias de código por las qué queremos preguntar.
+
+&& (Operador AND)
+Si se cumplen ambas condiciones que estamos utilizando, cuando lo ejecutemos nos dará verdadero (2 condiciones verdaderas) y nos dará falso (1 condición verdadera y 1 condición falsa)
+
+Ejemplo:
+Let dia = “domingo”
+Let clima = “soleado”
+
+Dia == “domingo” && clima == “soleado” // true
+
+|| (Operador OR)
+Sirve para preguntar por varias sentencias a la vez. Pero a diferencia del AND con que solo una de las sentencias evalúeles como verdadera, toda la sentencia completa dará verdadero.
+
+8 >= 15 // false
+8 != 3 // true
+
+8 >= 15 || 8 != 13 // true
+
+Operador de Negación
+Nos permite cambiar el dato a falso o verdadero dependiendo de cual era el valor que existía anteriormente.(se utiliza !)
+
+/* Undefined es como esperando a ser definida, Llenas la caja de "vacío"
+Null es como dejarla vacía "a propósito" no espera a ser "llenada" así lo explico en mi cabeza*/

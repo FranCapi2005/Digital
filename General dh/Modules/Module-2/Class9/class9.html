@@ -1,0 +1,48 @@
+Curso N.9 Curso Programación - Web Full Stack 
+
+Clase 03-10-2023
+
+*OBJETOS LITERALES
+Se utilizan llaves, estas se acompañan siempre de dos puntos y el valor ira acompañado de una coma 
+    -PROPIEDADES
+                Clave: valor, 
+                Key: value,
+Para acceder a una propiedad es necesario utilizar la "Dot notation":
+        - Objeto literal al que queres acceder.
+        - implementar un punto.
+        - propiedad (a la que queres acceder).
+
+
+Estos mismos tienen metodos (metodos = si una propiedad almacena una funcion, diremos que es un metodo de objeto).
+
+*Palabra Reservada "THIS"
+va a hacer referencia al Objeto que esta invocando la funcion (Hace referencia a el objeto que estaremos instanciando).
+
+*Constructor de objetos
+(La función constructora nos permite armar un molde y luego crear todos los
+objetos que necesitemos.
+La función recibe un parámetro por cada propiedad que queramos asignarle al objeto. Es necesario que el nombre de la funcion empiece siempre con MAYUSULA)
+
+INSTANCIAR = crear un objeto particular a partir de la funcion molde. Se le asigna la palabra reservada "new" a una variable cualquiera
+
+
+*MODULOS DE NODE
+Es un bloque de codigo reutilizable, una unidad de funcionalidad cuya existencia no altera incidentalmente el comportamiento de otros bloques de codigo.
+Como utilizar modulos de node:
+    - Crear archivo de entrada a tu aplicacion (.js), se le suele dar el nombre de app. este es el archivo de entrada (entry point)
+    - Requerir el modulo que deseas dentro del archivo de entrada. se utiliza la funcion nativa de node "require()", esta funcion toma como parametro un "string", el cual toma exactamente el nombre del modulo a requerir.
+    (al invocarlo, se genera un objeto literal en esa variable, y tendra muchas propiedades, etc...)
+    const fs = require('fs');
+
+*¿Como crear mi propio modulo?
+- Crear una carpeta dentro de la raiz del proyecto
+- Archivos (.js) (index.js)
+- Usar un Objeto literal para crear el modulo
+
+EXPORTAR MODULOS.
+module.export = superHeroes; (escrbir al final del archivo)
+
+-Ir al Entry Poinr (app.js) y escribir el "require()" con el nombre del modulo (respetar el nombre de la carpeta), para los modulos creados por uno mismo hay que colocar "./superHeroes" 
+
+*FILE SYSTEM
+const fs = require("fs"); //importamos el módulo file system

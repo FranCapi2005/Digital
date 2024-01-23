@@ -1,0 +1,247 @@
+Curso N.32 Curso Programación - Web Full Stack
+
+*Sessins == variable que se comparte durante toda la navegacion y se comparte por usuario/navegador.
+Cunado se utiliza session es necesario almacenar informacion en la computadora del usuario (cookie)... La informacion se guarda en el servidor, cuando el usuario cierra el navegador la informacion se borra automaticamente.
+
+Sessin se puede acceder y utilizar por medio de "express-session", la instalacion se realiza de la siguiente forma:
+    - npm install express-session --save
+Y se require en el entry point ya que queremos que todas las paginas utilicen el "session":
+
+<script>
+
+    const session = require("express-session");
+
+app.use(session({secret: 'Shhhh, es un secreto!'}))
+
+</script> 
+
+bcrypy.compareSync(req.body.password ) == comparar la contraseña encriptada con la que ingreso el usuario
+
+<!-- Basicamente hay que hacer lo siguiente en el usersController.js -->
+
+<script>
+    const { validationResults } = require("express-validator")
+
+    const controllers = {
+        login: (req, res) =>{
+        return res.render("login");
+        },
+        processLogin: (req, res) => {
+            // Obtenemos los errores de validacion si existen
+            let errors = validationResults(req);
+
+            if(errors.isEmpty()){
+                // Si no hay errores buscamos al usuario
+                let usersJSON = fs.readFileSync("users.json", { 
+                encoding : "utf-8"}) /* Lee los ultimos usuarios  */
+                let users;
+                if(usersJSON == ""){
+                    users = [];
+                } else {
+                    users = JSON.parse(usersJSON)
+                }
+                let usuarioALoguearse
+
+                for(let i = 0; i < users.length; i++){
+                    if(users[i].email == req.body.email){/* Compara si el mail ingresado por el usuario en realidad existe en la base de datos */
+                        if(bcrypt.compareSync(req.body.password, users[i]. password)){ /* Comprueba si la contraseña encriptada es la misma que ingreso el usuario al intentar loguearse */
+                            usuarioALoguearse = users[i]
+                            break;
+                        }
+                    }
+                }
+
+                if(usuarioALoguearse == undefined){ /* Si usuarioALoguearse es indefinido == "hay algun error" entonces imprime error: [{msg: "usuario o contraseña incorrectors"}] */
+                    return res.render("login", {errors: [
+                        {msg: "Usuario o Contraseña incorrectos"}
+                    ]});
+                }
+
+                req.session.usuarioLogueado = usuarioALoguearse;
+                res.render("success")
+            } else{
+                return res.render("login", {errors: errors.errors})
+            }
+        } 
+    }
+</script>
+
+CREAR 2 MIDDLEWARES:
+
+"authMiddleware.js" == se encarga de chequear si el usuario esta logueado 
+
+<script>
+    function authMiddleware (req, res, next){
+        if(req.session.usuarioLogueado != undefined){
+            next();
+        }else{
+            res.send("Esta pagina es solo para usuarios")
+        }
+    }
+
+    module.exports = authMiddleware;
+</script>
+
+
+
+"guestMiddleware.js" == se encarga de chequear si el usuario no esta logueado
+
+<script>
+    function guestMiddleware (req, res, next){
+        if(req.session.usuarioLogueado == undefined){
+            next();
+        }else{
+            res.send("Esta pagina es solo para logueados")
+        }
+    }
+
+    module.exports = guestMiddleware;
+</script>
+
+EN ROUTES => /"users.js" ==
+
+<script>
+    let guestMiddleware = require("../middlewares/guestMiddleware")
+    let authMiddleware = require("../middlewares/authMiddleware")
+
+    router.get("/register", guestMiddleware, usersController.register)
+</script>
+
+
+
+
+
+
+
+
+
+
+
+NECESITAMOS
+- Tener informacion que se guarda en todas las paginas
+- Que sea por usuario
+- Que no se pierda esa informacion al cerrar el navegador
+
+
+*Cookies == archivos que podemos guardar en el cliente (navegador del usuario). Se le puede aplicar un tiempo de expiracion para que se elimine al acabar el tiempo y no al cerrar el navegador.
+
+Al querer guardar una cookie es necesario usar el "response" (res) y el metodo req.cookie
+
+Para leer la cookie es necesario usar el "request" (req) y la propiedad cookie como si fuese un objeto de lectura
+
+
+EJEMPLO recordar la cuenta y mantener sesion (checkbos = "recordame"):
+
+
+EN EL ENTRY POINT HAY QUE COLOCAR LO SIGUIENTE 
+
+<script>
+
+    app.use(cookieParser());
+
+</script>
+
+
+<script>
+    const { validationResults } = require("express-validator")
+
+    const controller = {
+        login: (req, res) =>{
+        return res.render("login");
+        },
+        processLogin: (req, res) => {
+            // Obtenemos los errores de validacion si existen
+            let errors = validationResults(req);
+                
+
+
+            /* ESTO ES UN AGREGADO DEL "processLogin" DE ARRIBA */
+                /*  !IMPORTANT */
+                /* COOKIE RECORDAME */
+                /*  !IMPORTANT */
+
+            if(req.body.recordame != undefined){
+
+                /* CREAMOS UNA COOKIE, QUE GUARDE EL MAIL DEL USUARIO A LOGUEARSE Y EXPIRA EN 1 AÑO */
+
+                res.cookie("Recordame", usuarioALoguearse.
+                email, { maxAge: 1000 * 60 * 60 *24 * 365})
+            }
+                /*  !IMPORTANT */
+
+
+        } 
+    }
+</script>
+
+
+CREACION DE MIDDLEWARE PARA OBTENER LA COOKIE CREADA.
+
+"rememberMeMiddleware.js"
+
+<script>
+ function rememberMeMiddleware (req, res, next){
+    if(req.cookie.recordame != undefined && req.session.usuarioLogueado == undefined){
+
+        let usersJSON = fs.readFileSync("users.json", { 
+                encoding : "utf-8"})  
+                let users;
+                if(usersJSON == ""){
+                    users = [];
+                } else {
+                    users = JSON.parse(usersJSON)
+                }
+                let usuarioALoguearse
+
+                for(let i = 0; i < users.length; i++){
+                    if(users[i].email == req.coockies.recordame){
+                        usuarioALoguearse = users[i]
+                        break;
+                        }
+                    }
+                }
+
+                req.session.usuarioLogueado = usuarioALoguearse
+    next();
+ }
+</script>
+
+VAMOS A "app.js"
+
+<script>
+    const rememberMeMiddleware = require("../middlewares/rememberMeMiddleware")
+
+
+    app.use(rememberMeMiddleware)
+</script>
+
+
+
+
+
+
+
+
+
+*HASHING == el hashing permite que se guarde la contraseña de manera cifrada:
+    1. No se puede recuperar la contraseña original
+    2. Se puede comparar El hash con la contraseña para ver si hay similitudes
+
+Instalar el paquete: 
+    npm install bcryptjs --save
+
+<script>
+    let bcrypt = require("bcrypt")
+
+    let password = "holaComoEstasEsteEsUnStingAHashear"
+    /* ESTA FUNCION LLEVA 2 PARAMETROS, El primero es el texto a encriptar y el segundo es la "sal" / "valor numerico" el cual indica la cantidad de rondas de "seguridad" */
+    let hasheo = bcrypt.hashSync(password, 10);
+
+    /* EL "bcrypt.compareSync" SE ENCARGA DE COMPROBAR SI LA CONTRASEÑA ORIGINAL ESCRITA POR EL USUARIO A LOGUEARSE ES LA MISMA QUE ESTA HASHEADA */
+
+    /* SIEMPRE PRIMERO SE COMPARA EL TEXTO PLANO Y LUEGO LA CONTRASEÑA DEL HASH */
+    let validacion = bcrypt.compareSync(password, hasheo)
+</script>
+
+
+

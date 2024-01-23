@@ -1,0 +1,53 @@
+Curso N.6 Curso Programación - Web Full Stack 
+
+Clase 21-09-2023
+
+*Arrays (tipo de dato)
+Conocidos como matriz unidimensional o vector. Permiten agrupar varios datos, teniendo en cuenta que cada dato va a tener un indice en el array.
+
+(Indice = lugar disponible dentro de un organizador, siempre empiezan en nº0)
+
+Ejemplo:
+let seriesFavoritas = [“Spiderman”, “Breaking Bad”];
+
+console.log(seriesFavoritas[1]); // Imprimirá “Breaking Bad”
+
+
+Cada Array posee una longitud, la cual es igual a la misma cantidad de elementos que contenga
+seriesFavortitas posee una longitud de 2 elementos y 1 indice (elementos: Spiderman y Breaking Bad.) e (indice: 1 = Breaking Bad)
+
+
+Metodos de arrays
+Permiten manipular los datos dentro de ese array.
+
+.push() = sirve para agregar datos al final de un array, (modifican la longitud como la cantidad de indices)
+
+.pop() = sirve para sacar el ultimo elemento de un array.
+Ejemplo:
+
+.shift() = sirve para sacar el elemento ubicado en el indice 0 (devuelve el dato extraido)
+
+.unshift() = sirve para agregar elementos al incio de un array
+
+.indexOf() = se ejecuta sobre un array dado y recibe como parámetro una cadena de texto, la cual se buscará dentro del array empezando por el primer elemento, (retorna el valor del indice donde se encuentra el  dato pedido, si no se encuentra indicara (-1)).
+
+.lastIndexOf() = se ejecuta sobre un array dado y recibe como parámetro una cadena de texto, la cual se buscará dentro del array, empezando desde el ultimo elemento, (retorna el valor del indice donde se encuentra el  dato pedido, si no se encuentra indicara (-1)).
+
+.join() = permite unificar todos los elementos presentes en el array en un único string
+
+.Includes() = se ejecuta sobre un array dado y recibe como parámetro una cadena de texto, la cual se buscará dentro del array, (retornara un valor booleano, “True” o “False”).
+
+
+Metodos de Strings
+
+.length = cuenta y devuelve los caracteres alfanumericos y los espacios en blancos.
+
+.indexOf() = se ejecuta sobre un string dado y recibe como parametro una cadena de texto. (sera buscada dentro del string que ejecuta el metodo), (Para javascript la primer letra de un string siempre estara en el indice cero(0)), si lo que se busca no se localiza, el indexOf() retornara (-1).
+
+.slice() = toma una porcion determinada de una cadena de texto, (es necesario dentro de los parentesis adjuntar 2 paramentros numericos. El 1ero indica desde donde queres comenzar y el 2do indica hasta donde queres cortar)
+
+.trim() = eliminar los espacios en blanco antes y despues de la primera ocurrencia de un caracter alfanumerico.
+
+.split() = permite convertir un string en un array.
+
+.replace() = nos permite remplazar una porcin de texto dentro de un string (2 parametros, 1ero: lo que buscas y 2do: el que seria su remplazo)

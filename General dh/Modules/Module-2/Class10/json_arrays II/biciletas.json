@@ -1,0 +1,74 @@
+[
+    {
+        "id": 1,
+        "marca": "Fierce",
+        "modelo": "FM18SI29AM211",
+        "rodado": 16,
+        "ano": 2019,
+        "color": "Celeste",
+        "peso": 13,
+        "tipo": "Montañera",
+        "precio": 35000,
+        "vendida": true
+    },
+    {
+        "id": 2,
+        "marca": "Shifter",
+        "modelo": "FM18F29AM210",
+        "rodado": 26,
+        "ano": 2020,
+        "color": "Negro",
+        "peso": 15,
+        "tipo": "Retro",
+        "precio": 15000,
+        "vendida": false
+    },
+    {
+        "id": 3,
+        "marca": "Olmo",
+        "modelo": "Ruta",
+        "rodado": 28,
+        "ano": 2019,
+        "color": "Naranja",
+        "peso": 16,
+        "tipo": "Triatlón",
+        "precio": 10000,
+        "vendida": true
+    },
+    {
+        "id": 4,
+        "marca": "Fierce",
+        "modelo": "FM18SI29AM211",
+        "rodado": 28,
+        "ano": 2021,
+        "color": "Rosa",
+        "peso": 15,
+        "tipo": "Paseo",
+        "precio": 8000,
+        "vendida": false
+    },
+    {
+        "id": 5,
+        "marca": "Halley",
+        "modelo": "Techno",
+        "rodado": 16,
+        "ano": 2020,
+        "color": "Verde",
+        "peso": 16,
+        "tipo": "Paseo",
+        "precio": 45000,
+        "vendida": true
+    },
+    {
+        "id": 6,
+        "marca": "Battle",
+        "modelo": "Regal",
+        "rodado": 26,
+        "ano": 2019,
+        "color": "Amarillo",
+        "peso": 13,
+        "tipo": "Montañera",
+        "precio": 90000,
+        "vendida": false
+    }
+]

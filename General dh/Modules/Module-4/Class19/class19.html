@@ -1,0 +1,46 @@
+Curso N.19 Curso Programación - Web Full Stack 
+
+Clase 09-11-2023
+
+*Modelo de cajas
+Cualquier elemento de html posee siempre 4 costados (Superior, Inferior, Lateral Izquierdo y Lateral Derecho)
+
+width                                       <!-- Sirve para asignarle un ancho a una estructura dentro de un html (imagen, div, article, entre otros.) -->
+height                                      <!-- Sirve para asignarle una altura a una estructura dentro de un html (imagen, div, article, entre otros) -->
+padding                                     <!-- Permite agregarle un espacio de relleno entre el contenido y el borde -->
+                                                    <!-- padding: 12px; (se aplica a toda la estructura) -->
+                                                    <!-- padding: 20px, 40px; (El primer valor representa la parte superior e inferior. El segundo valor representa la parte izquierda y derecha) -->
+                                                    <!-- padding: 23px, 40px, 10px; (El primer valor representa la parte superior. El segundo valor representa la parte izquierda y derecha. Y el tercer valor representa la parte inferior) -->
+                                                    <!-- padding: 12px, 15px, 20px, 25px; (se aplica a toda la estructura en orden horaria (a favor de las manecillas del reloj)) -->
+border                                      <!-- Permite hace referencia al borde de un elemento. Se ubica entre el contenido y el margen. (puede tener estilos como, solid, dotted, dashed o double)-->
+margin                                      <!-- Hace referencia a un margen exterior del elemento. Sirve para separar una caja de la otra -->
+box-sizing                                  <!-- Sirve para realizar un calculo de cuanto va a ocupar la "box", esta misma hace la suma de todas las propiedades anteriores para sacar el resultado de cuanto ocupara. Se puede usar para limitar el espacio de un elemento a cierto rango. -->
+
+
+*ViewPorts
+Visible dentro de la pantalla del navegador. Es gracias a ella que el css y html se puede ver bien en cualquier dispositivo. (este va como meta: en el html)
+
+<meta name="ViewPorts" content="width=device-width, initial-scale=1"> <!-- Da instrucciones de como dimensionar y escalar la pagina web al cargarse n-->
+*Responsive recomendado (425px)
+
+*Medidas
+
+Medidas absolutas: son radicales (no cambian depende del contexto, estas siempre se mantienen igual)
+            -px         1:1     piexl
+            -rem        1:16    .....
+
+Medidas relativas: si su contexto cambia estas pueden cambiar 
+            -%          ----   (se maneja segun caja madre / caja hija, la cual se adapta segun el porcentaje de la caba anidada dentro de la misma)
+            -Em         1:16
+            -vw         ----    viewport-width 
+            -vh         ----    viewport-height
+
+*Media Queries
+Regla de estilo para poder aplicarlas si se cumple una condicion determinada (condicional), todo esto para poder adaptarlo a unos tamaños especificos
+
+*Mobile First
+Version web para mobiles y modificarlos hasta llegar a la version de escritorio
+
+*Mobile Last
+Version web para escritorio y modificarlos hasta llegar a la version de mobiles
+

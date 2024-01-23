@@ -1,0 +1,214 @@
+Curso N.28 Curso Programación - Web Full Stack 
+
+
+HTTP = Hyper Text Transfer Protocol  => (basicamente es un protocolo el cual se encarga de definir unos lineamientos los cuales se deben cumplir para poder lograr el procesamiento de los datos)
+
+Metodos de HTTP
+    GET         =>  Solicitar datos
+    POST        =>  Enviar y crear un dato
+    PUT         =>  Reemplazar un dato
+    PATCH       =>  Modificar parcialmente un dato
+    DELETE      =>  Borrar un dato
+
+*Metodo GET => funciona para generar solicitudes al servidor (no modifican informacion ni nada y solamente las rutas que usen el metodo GET podran ser accedidas desde la URL o desde un enlace)
+
+*Metodo POST => funciona para enviar datos al servidor (funciona atraves de formularios), estas peticiones sirven para crear registros dentro del servidor.. (cuando se registra una compra, cuando se crea una venta de un producto, etc)
+
+*Metodo PUT => funciona para reemplazar informacion de un registro ya presente en un servidor
+
+*Metodo DELETE => funciona para borrar informacion de un registro ya presente en un servidor
+
+
+PROCESAMIENTO GET
+
+QUERY STRING = cadena de texto que contiene informacion dinamica (se puede agregar a fav ya que se vuelve permalink)
+
+req.query == Este objeto contiene toda la información que llega al servidor desde el cliente, incluyendo los parámetros de la URL
+
+
+PROCESAMIENTO POST
+
+El siguiente codigo basicamente sirve para aclarar a la apliacion que todo aquello que llegue desde un formulario, queremos capturarlo en forma de objeto literal.
+
+y a su vez, tener la posibilidad de convertir esa informacion en un formato JSON, en caso de necesitarlo
+<script>
+    app.use(express.unlencoded({ extended: false }));
+    app.use(express.json())
+</script>
+
+req.body == Esto es particularmente útil cuando se trata de recibir y procesar formularios en línea, ya que permite que los datos del formulario sean capturados y utilizados en el backend para realizar acciones específicas. (basicamente se utiliza para poder guardar nuevos datos que ingrese el usuario por medio de un pedido http de metodo POST)
+
+
+PROCESAMIENTO PUT
+
+Para poder procesar un metodo PUT el request del lado del cliente debe venir desde un formulario
+
+<script>
+
+    //en .routes/usuarios.ejs
+router.get("/:id/editar", usuariosController.editar);
+router.put("/:id/actualizar", usuariosController.actualizar);
+
+</script>
+usar paquete llamado => method-override (en el app.js)
+<script>
+
+    const methodOverride = require("method-override");
+    app.use(methodOverride("_method"))
+
+</script>
+
+agregar en el <form action="/usuarios/__/actualizar?_method=PUT" method="POST"> (se agrega un query string para especificar que se utilizara el metodo PUT)
+
+(((
+    <!-- En el controller hacer el siguiente codigo para editar -->
+    <script>
+        const controller = {
+            edit: function(req, res){
+                let idUser = req.params.idUser; 
+                //esto sirve para editar solamente y que redirija al archivo o producto segun el Id buscado
+                
+                let users = [
+                    {id: 1, name: "Dario"},
+                    {id: 2, name: "Marcela"},
+                    {id: 3, name: "Juan"},
+                    {id: 4, name: "Tomas"},
+                    {id: 5, name: "Diego"}
+                ]
+
+                let usersToEdit = users[idUser];
+
+                res.render("usersToEdit", {usersToEdit})
+            }
+        }
+
+    </script>
+    <!-- En la vista del EJS hacer el siguiente codigo para enviar el form editado -->
+
+        <%- include('partials/header.ejs') %>
+
+        <h1>Editing User</h1>
+        <form method="POST" action="/users/edit?_method=PUT">
+            <label for="">Nombre</label>
+            <input type="text" name="nombre" value="<%= usersToEdit.name %>">
+            <input type="submit" value="Editar">
+        </form>
+)))
+
+
+ERROR 404
+
+Es un codigo de estado que se envia desde el servidor al navegador al usuario que intenta acceder a un recurso no existente...
+<script>
+
+    app.use((req, res, next) => {
+        res.status(404).render("not-found")
+    })
+
+</script>
+
+Con res.status se le indica al servidor que si lo que se esta buscando no esta encontrando, entonces el response responde con un "not-found" (error 404 not found)
+AGREGAR UN ARCHIVO EJS CON RENDER PARA INFORMAR AL USUARIO 
+
+
+PATH
+
+<script>
+    const path = require("path")
+
+    let archivoAdmins = path.join("registros", "usuarios", "administradores.json")
+    // nos permite describir la ruta de una carpeta o un archivo.
+
+    let extension = path.extname(archivoAdmins)
+    // nos permite ver que tipo de extension se esta solicitando o validando en el servidor
+
+    let direccion = path.dirname(archivoAdmins)
+    // nos permite ver la ruta del directorio de lo que se esta solicitando (sin contar el archivo)
+</script>
+
+
+FS
+
+writeFile - writeFileSync
+<script>
+    const fs = require("fs")
+
+    fs.writeFileSync("bienvenida.txt", "Hola Mundo")
+    // nos permite escribir / reescribir un archivo. recibe 2 parametros, el primero es el archivo en el cual se realizara la accion y el segundo es lo que se escribira
+
+    // en algunos casos se necesitara almacenar informacion, por lo cual en el caso de que se necesite almacenar un "objeto literal", esto no se podra realizar... por eso es necesario convertir el objeto literal en un JSON
+
+        let persona = {
+            nombre : "Roberto",
+            mail : "roberto@digitalhouse.com",
+            contraseña : "minijuegos"
+        };
+
+        let personaJSON = JSON.stringify(persona);
+            // JSON.stringify nos permite convertir un objeto literal en un string de formato JSON
+
+        fs.writeFileSync("persona.json", personaJSON)
+
+
+        //en el caso de que necesitemos extraer nueva informacion dada por el usuario por medio de un formulario. se haria de la siguiente manera:
+
+        let persaona = {
+            name : req.body.name,
+            mail : req.body.mail,
+            contraseña : req.body.pass
+        }
+
+        // writeFileSync SIEMPRE PISA EL ARCHIVO EN CUESTION, Basicamente primero borra y luego escribe en el archivo. en el caso de necesitar agregar informacion al final de un archivo se reemplaza el "write" => "append" y quedaria de la siguiente manera:
+
+        "antes" = writeFileSync("bienvenido.txt", "Hola Mundo");
+        "ahora" = appendFileSync("bienvenido.txt", "Hola Mundo");
+
+
+
+        // writeFile es asincronica, no bloquea la ejecucion del resto de tu archivo js
+        // writeFileSync es sincronica, ya que bloquea la ejecucion del resto del archivo hasta que la misma se termine
+</script>
+
+readFile - readFileSync
+<script>
+    const fs = require("fs");
+
+    let texo = fs.readFileSync("bienvenida.txt")
+    // si hacemos "console.log()" nos dara un buffer el cual es un elemento de js. para poder leer el archivo hay que especificar el tipo de enoding en un objeto literal, de la siguiente manera:
+
+    let texto = fs.readFileSync("bienvenida.txt", {encoding: "utf-8"})
+
+</script>
+
+PARA CREAR Y GUARDAR DATOS RECIBIDOS
+
+<script>
+    const userController = {
+        create: function(req, res){
+
+            let usuario = {
+                nombre : req.body.name,
+                apellido : req.body.apellido,
+                mail : req.body.mail,
+                contraseña : req.body.pass
+            }
+
+            // primer vamos a leer el archivo
+            let archivoUsuario = fs.readFileSync("usuarios.json", {encoding: "utf-.8"})
+
+            let usuarios;
+
+            if(archivoUsuario == ""){
+                usuarios = []
+            } else {
+                usuarios = JSON.parse(archivoUsuario);
+            }
+
+            usuarios.push(usuario);
+            usuariosJSON = JSON.stringify(usuarios);
+
+            fs.writeFileSync("usuarios.json", usuariosJSON)
+        }
+    }
+
+</script>

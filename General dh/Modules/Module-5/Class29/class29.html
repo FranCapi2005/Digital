@@ -1,0 +1,37 @@
+Curso N.29 Curso Programación - Web Full Stack 
+
+*Multer == libreria de express que nos permite procesar cualquier tipo de archivo cargado desde el navegador para despues guardarlo en el servidor.
+
+*COMO INSTALARLO : 
+    - npm install Multer
+
+Y LUEGO REQUERIRLO :
+<script>
+    const multer = require('multer');
+</script>
+
+En el formulario se utiliza la estructura 
+
+<form action="/" method="post" enctype="multipart/form-data">
+    <!-- Campo del form a colocar -->
+</form>
+
+<!-- ecntype sirve para poder enviar y procesar el archivo en el servidor. -->
+
+<script>
+ const storage = multer.diskStorage({
+
+// donde guardamos los archivos
+destination : function(req, file, cb){
+    cb(null, "public/images/products")
+},
+
+// que nombre tendra el archivo nuevo
+filename : function(req, file, cb){
+    cb(null, file.fieldname + " - " + Date.now() + path.extname(file.originalname));
+}
+
+});
+const upload = multer({storage : storage})
+
+</script>

@@ -1,0 +1,58 @@
+Curso N.4 Curso Programación - Web Full Stack 
+
+Clase 14-09-2023
+
+“\n” significa que termina una línea y comienza otra mas abajo a partir de ahí. 
+“\t” significa que hay un espacio (=  Tab)
+
+*Operadores Lógicos
+Unir sentencias de código por las qué queremos preguntar.
+
+&& (Operador AND)
+Si se cumplen ambas condiciones que estamos utilizando, cuando lo ejecutemos nos dará verdadero (2 condiciones verdaderas) y nos dará falso (1 condición verdadera y 1 condición falsa)
+Ejemplo:
+Let dia = “domingo”
+Let clima = “soleado”
+
+Dia == “domingo” && clima == “soleado” // true
+
+|| (Operador OR)
+Sirve para preguntar por varias sentencias a la vez. Pero a diferencia del AND con que solo una de las sentencias evalúeles como verdadera, toda la sentencia completa dará verdadero.
+
+8 >= 15 // false
+8 != 3 // true
+
+8 >= 15 || 8 != 13 // true
+
+Operador de Negación
+Nos permite cambiar el dato a falso o verdadero dependiendo de cual era el valor que existía anteriormente.(se utiliza !)
+
+*Condicionales
+Permite ejecutar un bloque de código siempre que se cumpla una condición.
+
+If
+Lleva llaves, se puede implementar el “else” y el “else if”
+
+If ternario
+Este no lleva llaves, ni usa “if” ni “else”.
+
+Ejemplo:
+let haceCalor = true ? "Ponerse Ropa Ligera" : "no hay nada que hacer"; 
+
+console.log(haceCalor);
+
+Switch
+Pregunta por algo si ese “algo” es verdadero ejecuta un bloque de código, se utilizan paréntesis y llaves
+
+Ejemplo:
+switch (haceFrio) {
+    case "true": 
+        console.log("Agarrar Abrigo");
+        break;
+    case "false":
+        console.log("Dejar Abrigo");
+        break;
+    default:
+        console.log("No hacemos nada");
+        break;
+}

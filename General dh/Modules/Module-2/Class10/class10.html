@@ -1,0 +1,31 @@
+Curso N.10 Curso Programación - Web Full Stack 
+
+Clase 05-10-2023
+
+
+*Metodos de Arrays II
+
+.map() = Se ejecuta sobre un array dado y recibe como parametro un "callback", dicho callback recorre uno a uno los elementos del array dado, tomando como parametro cada uno de estos elementos. Retorna un array nuevo con los mismos cantidad de elementos del array original.
+
+.filter() = filtrara los elementos de un array dependiendo la logica que implementes. Se ejecuta sobre un array,(recibe como parametro un callback) y recorrera el array dado, tomara cada uno de los elementos de este y retorna un array solamente con los elementos que cumplan la condicion definida.
+
+.reduce() = Se ejecuta sobre un array dado, recibe como parametro un callback y este recorre uno a uno los elementos del array. El reduce() tiene como finalidad reducir a la mas minima expresion el array dado, retornando como resultado un unico valor. (Callback recibe 2 parametros, el primero sera el acumulador y el segundo sera el elemento actual)
+
+.forEach() = tiene una sola funcion, la cual es iterar sobre un array dado, recibe como parametro un callback que recorrera el array dado (NO RETORNA NADA).  
+
+*JSON
+Acronimo de "JavaScript Object Notation" y es un formato de texto utilizado para el intercambio de datos entre distintos sistemas. Cadena de texto que puede ser facilmente compartida y todos los lenguaje de Programación estan en la posicion de interpretar.
+
+Formato
+`[{"name": "Argentuna", "capital": "Buenos Aires", "region": "Americas"}]`
+Es asi ya que se puede transformar facimente en un array o un objeto literal.
+
+JavaScript nos da un Objeto nativo llamado JSON el cual viene con 2 metodos:
+        *JSON.parse()
+                    Recibe como parametro un dato y retorna el mismo en un objeto literal o un array (el dato suministrado tiene que ser una cadena de texto en tipo JSON)
+
+        *JSON.stringify()
+                    Toma un array o un objeto literal y retorna el dato en un string de tipo JSON
+
+                
+

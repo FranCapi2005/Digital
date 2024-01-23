@@ -1,0 +1,44 @@
+[
+    {
+        "marca": "Bandai",
+        "nombre": "Gamora",
+        "precio": 2100,
+        "stock": 84
+    },
+    {
+        "marca": "Bandai",
+        "nombre": "Hulk",
+        "precio": 2500,
+        "stock": 21
+    },
+    {
+        "marca": "Bandai",
+        "nombre": "Thor",
+        "precio": 3100,
+        "stock": 45
+    },
+    {
+        "marca": "Bandai",
+        "nombre": "Vegeta",
+        "precio": 2600,
+        "stock": 57
+    },
+    {
+        "marca": "Bandai",
+        "nombre": "Sailor Pluto",
+        "precio": 1900,
+        "stock": 70
+    },
+    {
+        "marca": "Bandai",
+        "nombre": "Sailor Saturn",
+        "precio": 2200,
+        "stock": 11
+    },
+    {
+        "marca": "Bandai",
+        "nombre": "Wonder Woman",
+        "precio": 4000,
+        "stock": 210
+    }
+]

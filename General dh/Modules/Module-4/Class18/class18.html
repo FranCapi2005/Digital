@@ -1,0 +1,53 @@
+Curso N.18 Curso Programación - Web Full Stack 
+
+Clase 07-11-2023
+
+*CSS
+Css es un complemento el cual sirve para dar estilos al front-end de una pagina web, se puede cambiar fondos, tipografia, interlineados, generar animaciones y transiciones.
+
+Estilos Basicos:
+
+font-family                                 <!-- Permite elegir la familia de la tipografia, esta debe existir en la computadora del usuario o debe usar un webfont -->
+font-size                                   <!-- Permite elegir el tamaño de la tipografia, recibe un valor numerico acompañado de medidas (px, em y rem) -->
+font-style                                  <!-- Permite definir el estilo de la tipografia (italic, oblique y normal), (elementos como <em> ya poseen el estilo italic)-->
+font-weight                                 <!-- Permite definir el peso de la tipografia, recibe valores (bold, lighter, normal, entre otros), tambien puede recibir valores numericos que se incrementaran de 100 en 100 -->
+text-align                                  <!-- Permite definir la aliniacion del texto, recibe valores (center, left, right, justify y inherity) -->
+text-decoration                             <!-- Permite elegir el tipo de decoracion para el texto, recibe valores (line-through, underline, overline y none) -->
+line-height                                 <!-- Permite definir el alto de cada linea de texto, recibe como valor (un numero y la unidad de medida), va acompañado de "font-size" -->
+color                                       <!-- Permite darle color a un texto de un elemento -->
+opacity                                     <!-- Permite darle opacidad a todo un elemento -->
+background-color                            <!-- Permite darle color a un fondo de un elemento -->
+background-repeat                           <!-- Permite controlar si se va a repetir, y de qué manera, la imagen dispuesta. Recibe los valores repeat, no repeat, repeat-x, repeat-y, round y space. -->
+background-image                            <!-- Permite asignarle una imagen de fondo al elemento, definiendo la ruta a través de la URL. -->
+background-position                         <!-- Permite mover la imagen dentro del elemento y decidir dónde colocarla, recibe valores (tamaño de pixeles y porcentajes), (right, bottom, left, etc...) y por ultimo Podemos asignarle uno o dos valores. El primero para especificar la posición en el eje x y el segundo, la posición en el eje y. -->
+background-attachment                       <!-- Permite establecer si la imagen de fondo se va a mover junto con la página al hacer scroll o si se va a quedar fija, recibe valores (fixed, scroll, inherit e initial) -->
+background-size                             <!-- Permite establecer el tamaño de la imagen de fondo, recibe valores (contain, cover, inherit; así como también tamaños en pixeles y porcentajes) -->
+
+
+*Colores
+Los siguientes formatos se pueden aplicar a cualquier propiedad de CSS que reciba color:
+    
+    -NOMBRE 
+    ej: "purple", "orange", etc...
+
+    -HEXADECIMAL
+    ej: "#FFF" o "#FFFFFF"
+
+    -RGB (R.G.B == RED.GREEN.BLUE)
+    ej: rgb(255, 100, 50)
+
+    -RGBA (R.G.B.A == RED.GREEN.BLUE.OPACITY)
+    ej: rgba(255, 50, 125, 0.5)
+
+*BACKGROUND-COLOR
+p { background-color: tomato }
+
+p { background-color: #3459ff }
+
+p { background-color: rgb(12, 34, 32) }
+
+*BACKGROUND-IMAGE
+body { background-image: url('../img/bici.jpg') }
+
+*BACKGROUND-REPEAT
+body { background-repeat: repeat-x }

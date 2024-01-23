@@ -1,0 +1,36 @@
+Curso N.35 Curso Programación - Web Full Stack
+
+INSERT INTO = sirve para insertar datos en una tabla especifica.
+    Ej: 
+
+    INSERT INTO movies VALUES
+    (DEFAULT, NOW(), NOW(), "Her", 9.5, 3, "2010-01-14 00::00:00", 120, 5) <!-- ACA SE ESTA COMPLETANDO CON DATOS SEGUN LAS COLUMNAS COLOCADAS DENTRO DE LAS TABLAS -->
+
+DELETE FROM = lleva el nombre de la tabla que se va a eliminar... hay que colocar el WHERE ya que se puede eliminar toda la tabla...
+    Ej:
+
+    DELETE FROM movies
+    WHERE rating < 1
+
+UPDATE = lleva el nombre de la tabla a actualizar, tambien se le agrega un SET para editar la fila especifica... Ya que sino se cambian todas las filas, esto tambien va con WHERE...
+    Ej:
+
+    UPDATE movies
+    SET title='The Godfather'
+    WHERE id=2;
+
+*SELECT = sirve para consultar datos dentro de una tabla especifica... (podemos modificar lo que vemos como resultado pero no podemos modificar los datos con el SELECT)
+    Ej: 
+
+    <!-- se coloca el * ya que especificamos que campos vamos a buscar -->
+    SELECT * FROM movies 
+
+
+
+*WHERE = sirve para hacer filtros en nuestros resultados. 
+    Ej: <!-- Estamos seleccionando todos los datos de la tabla "movies" --> <!-- Y luego estamos diciendo que muestre el resultado de peliculas cuyo "rating" sea mayor (>) a 5-->
+    SELECT * FORM movies 
+    WHERE rating > 5
+
+    
+*ORDER BY = sirve para ordenar los resultados

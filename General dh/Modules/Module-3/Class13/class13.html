@@ -1,0 +1,68 @@
+Curso N.13 Curso Programación - Web Full Stack 
+
+Clase 19-10-2023
+
+*Introduccion a GIT
+En la programacion es tener 2 cosas: (git permite hacer lo siguiente)
+        1. necesario tener un backup de nuestros archivos continuamente actualizados
+        2. necesario poder comprartir nuestro trabajo con los demas integrantes de nuestro equipo
+
+Git es un software de control de versiones y mantiene eficientemente las actualizaciones sobre el codigo fuente. (tener historial completo de versiones)
+
+*GitHub
+Lugar en la nube donde alojar proyectos de programacion, podemos crear repositorios.
+
+Repositorio local: es el que tiene todos los archivos (que hayas guardado en él) en nuestra computadora.
+
+commits : paquetes que nos van a permitir ir haciendo un seguimiento de los cambios que vamos realizando, dado que cada uno de ellos tiene una timestamp, o fecha de creación, y un autor. Los commits van a ser nuestro historial de cambios que se fueron haciendo en el proyecto.
+
+**COMANDOS
+
+
+$ git init // crea el repositorio
+
+$ git config user.name "nombreUsuario"                                               ==> agrega nuestra identidad
+
+$ git config user.email "nombreUsuario@email.com"                                    ==> agrega nuestro email
+
+$ git remote add origin "https://github.com/FranCapi2005/Concesionaria.git"          ==> apunta al repositorio remoto
+
+$ git add                                                                            ==> agrega todos los archivos
+
+$ git commit -m "mensaje"                                                            ==> comitea los cambios hechos
+
+$ git remote -v                                                                      ==> mostrar si el repositorio remoto esta creado correctamente
+
+$ git push origin master                                                             ==> envia los cambios al repositorio remoto
+
+$ git push -u origin master                                                          ==> envia los cambios al repositorio remoto (primer push)
+
+$ git clone                                                                          ==> clona el repositorio al que te uniste
+
+$ git status                                                                         ==> seguimiento del estado de los archivos
+
+$ ls -la                                                                             ==> muestra las "carpetas ocultas"
+
+$ rm -rf .git                                                                        ==> elimina el "git init" realizado antes
+
+$ git log                                                                            ==> muestra todas las commits en el historial del repositorio
+
+$ git log oneline                                                                    ==> causa en el git log que se muestre en pantalla: 
+                                                                                                                                        * Un commit por línea.
+                                                                                                                                        * Los primeros 7 caracteres del SHA.
+                                                                                                                                        * Mensaje del commit.
+$ delete branch locally git branch -d localBranchName                                ==> borrar una rama del ordenador
+
+$ delete branch remotely git push origin --delete remoteBranchName                   ==> borrar una rama de github
+
+
+TIPOS DE MSJ EN UN REPOSITORIO
+
+U = UNTRACKED
+M = MODIFIED
+A = ADDED
+D = DELETED
+C = COPIED
+R = RENAMED
+E = ENTIRE FILE CHANGED
+

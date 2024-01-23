@@ -1,0 +1,198 @@
+Curso N.31 Curso Programación - Web Full Stack
+
+*Middlewares == Funciones en cadenas, estan el medio del pedido y de la ejecucion. Middle-Ware (se llama asi ya que estan situados entre la ruta y el controlador), cada uno de los middlewares puede cortar la ejecucion y dar la respuesta al cliente
+
+
+Características de los middlewares
+
+1 - Express trata al request y response como objetos. Recibe una petición, la procesa y devuelve un objeto como respuesta.
+
+2 - Toda petición requiere de una serie de pasos para ser procesada. Express divide esas responsabilidades en funciones denominadas middlewares.
+
+3 - Los middlewares son funciones que se ejecutan en medio de la ejecución del pedido del cliente y la respuesta del mismo.
+
+4 - Las rutas que requieran middlewares —además del request y el response— deberán recibir un tercer parámetro: la función next.
+
+5 - next permite la ejecución en cadena de todas las funciones necesarias que deberán ejecutarse antes de enviarle la respuesta al cliente.
+
+6 - Con los middlewares podemos aislar código que nos permita resolver un escenario en particular e implementarlo en donde sea necesario, evitando así repetir código.
+
+7 - Estas funciones agregan una capa de seguridad. Si la función que definimos como middleware no retorna lo esperado, la misma cortará la ejecución en cadena y devolverá la respuesta seteada para esos casos.
+
+
+EJEMPLO logMiddleware: 
+<script>
+    /* Next = sirve para ejecutar el siguiente middleware. */
+    app.use(function(req, res, next){
+
+    })
+</script>
+
+CREAR NUEVA CARPETA "middlewares"
+
+1. Creamos "logMiddleware.js" (sirve para dejar registro de en que paginas entran los usuarios, sea que entra al home, login, etc) y luego escribimos el siguiente codigo.
+
+<script>
+    const fs = require("fs");
+
+    function logMiddleware(req, res, next){
+        fs.appendFileSync("log.txt", "se ingreso en la pagina " + req.url);
+
+        next();
+    }
+
+    module.exports =logMiddleware;
+</script>
+
+2. Vamos al Entry Point == app.js y hacemos el siguiente codigo.
+
+<script>
+    const logMiddleware = require("./middlewares/logMiddleware");
+
+
+    app.use(logMiddleware);
+</script>
+
+
+EJEMPLO logDBMiddleware.js: 
+
+1. Creamos "logDBMiddleware.js" (sirve para dejar un regitro de en que ruta se entro para crear cosas en la bases de datos) y luego escribimos el siguiente codigo.
+
+<script>
+    const fs = require("fs");
+
+function logDBMiddleware(req, res, next){
+    fs.appendFileSync("logDB.txt", "se creo un registro al ingresar en " + req.url);
+
+    next();
+}
+
+module.exports =logDBMiddleware;
+</script>
+
+2. Como solo afecta a algunas rutas, hay que ir al "Routes" en el cual se especificara en que archivo se usara ese middleware. (routes == users) (como se usa un post, hasta que no se envie un metodo http post no se reflejara)
+
+<script>
+    const logDBMiddleware = require("./middlewares/logDBMiddleware")
+
+    router.post("/register", logDBMiddleware, usersController.store)
+</script>
+
+
+
+
+
+*Express Validator = validar datos (evitar guardar informacion erronea), es una libreria que funcina como middleware que se ejecuta sobre las rutas especificas.
+
+Instalacion :
+    - npm install express-validator
+    
+    <!-- Despues de requerir el paquete de "express-validator" se realizan validaciones por medio de constantes/variables, de la siguiente manera: -->
+<script>
+    const { body } = require("express-validator")
+    const validaciones = [
+    /* el body toma como argumento el nombre del campo del formulario y especifica que tipo de validacion hay que aplicar. */
+        body("nombreCompleto").notEmpty(),
+        body("correoElectronico").notEmpty(),
+        body("contrasenia").notEmpty(),
+    ]
+
+    router.post("/registro", validaciones, controller.registrar);
+</script>
+
+DEJAR MENSAJE SI NO SE CUMPLE LA VALIDACION 
+<script>
+    const validate = [
+        body("first_name").notEmpty().withMessage("Debe completar el campo de Nombre"),
+        body("last_name").notEmpty().withMessage("Debe completar el campo de Apellido"),
+        body("email").isEmail().withMessage("Debe completar con un email valido")
+    ];
+</script>
+
+
+Validar en el controlador de la ruta
+<script>
+    const {validationResult} = require("express-validator");
+
+
+    storUser : (req, res) => {
+        /* Lo que hace la siguiente variable es usar la informacion del validationResult y recibe como parametro el "req", el cual trae los datos del formulario enviado y los valida, en caso de haber un error se guarda en la variable definida */
+
+        let errores = validationResult(req);
+
+        if(!errores.isEmpty()){
+            /* Si errores NO esta vacio, 
+                vamos a hacer algo */
+
+
+            return res.render("formularioRegistro", { mensajesDeError: errores.mapped() }) // aca se le pasa como nombre "mensajesDeError" y este lo que hara es crear un nuevo array con objeto literal el cual almacenara todos los errores generados
+        }
+    }
+
+
+    /* ESTE OBJETO LITERAL ES EL GENERADO POR MEDIO DE {mensajesDeError: errores.mapped() } */
+    {
+        nombreCompleto : {
+            value: ""
+            msg: "Invalid value" /* Mensaje que se mostrara en la pantalla del usuario al alertar del error */
+            param: "nombreCompleto"
+            location: "body"
+        }
+        correoElectronico: {
+            value: ""
+            msg: "Invalid value" /* Mensaje que se mostrara en la pantalla del usuario al alertar del error */
+            param: "correoElectronico"
+            location: "body"
+        }
+    }
+</script>
+
+<!-- Dentro de la vista del formulario (EJS), hacer la siguiente iteracion -->
+
+
+<% if (locals && locals.mensajesDeError) { %> <!-- Funciona para que informe, que si el controlador envio variables locales y que si dentro de esas variables locales, esta el mensaje error, hay que iterar sobre esta misma  -->
+    <% for (let error in mensajesDeError) { %>
+
+        <p> <%= mensajesDeError[error].msg %> </p> <!-- Se itera sobre los objetos que tienen mensaje de error y por cada error se imprime la propiedad "msg" -->
+
+    <% } %>
+<% } %>
+
+
+
+EJEMPLO DE CREAR USUARIO FORM
+<script>
+const { validationResult } = require("express-validator");
+
+    const controller = {
+        create: (req, res) => {
+            res.render("users/create");
+        },
+        formCrearUsuario: (req, res) => {
+
+            let errores = validationResult(req);
+
+            if(errores.isEmpty()){
+                //LO QUE HACE EL SIGUIENTE CODIGO ES CREAR UN NUEVO USUARIO, ESTE CODIGO ESTA SACADO DE UN PROYECTO MOSTRADO EN LOS VIDEOS DE PLAYGROUND. PERO BASICAMENTE, EL IF INDICA QUE SI EL OBJETO LITERAL DE "mensajeDeError" ESTA VACIO, ENTONCES SE PROCEDE Y SE CREA EL USUARIO Y PERFIL
+
+                /* let user = req.body;
+
+                userId = usersModel.create(user);
+                res.redirect("/users/" + userId) */
+
+            } else {
+                /* res.render("users/create", { 
+                    errores: errores.array(),
+                    old: req.body
+                }); */
+            }
+        }
+    }
+
+
+
+    /* EN EL FORM DE CREAR, HAY QUE HACER UN IF (LOCAL PARA VERIFICAR), UN FOREACH PARA ITERAR SOBRE EL MENSAJE DE ERROR EN EL CASO DE QUE SEA NECESARIO, Y EN EL CAMPO A COMPLETAR, EN VALUE=" <% locals.old && old.variableAUtilizarEjFirst_name ? old.first_name : "" %>" */
+
+</script>
+
+<!-- TODO EL CODIGO DE EJEMPLO ESTA EN LA CARPETA "dh-node-express-validator-avanzado" -->

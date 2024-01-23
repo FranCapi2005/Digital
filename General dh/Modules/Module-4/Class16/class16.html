@@ -1,0 +1,42 @@
+Curso N.16 Curso Programación - Web Full Stack 
+
+Clase 31-10-2023
+
+Arquitectura Cliente-Servidor
+Cliente == dispositivo que hace petiiones de servicios o productos a un servidor (tablet, celular, et...)
+servidor == equipo que brinda servicios a dispositivos que esten conectados a la misma Web.
+
+Request y Response (Solicitud al ingresar a una pagina, esta es enviada al servidor y devuelve una respuesta).
+
+Front-End (HTML y CSS) ==> leer y entender la estructura de la pagina y ver estilos
+Back-end (Javascript) ==> manejo de PHP para sitios web dinamicos y mySQL para manejo de datos de base de datos
+
+((Experimentar el Cliente-Servidor con un web server))
+
+*HTTP == (Hyper Text Transfer Protocol) o en castellano: Protocolo de Transferencia de HiperTexto— es un protocolo que sirve para gestionar la comunicación entre dos máquinas conectadas a una red. En donde una pide por un contenido específico y la otra se encarga de responder a dicha solicitud
+
+URN == indica el nombre exacto, el nombre del dominio y el del recurso
+URL == indica donde se encuentra ekk recurso (siempre empieza con http)
+
+METODOS MAS USADOS:
+
+    -Get == solicita datos
+    -Post == envia informacion al servidor
+    -Put / Patch == actualiza informacion
+    -Delete == elimina informacion
+
+
+*EXPRESS
+Framework == Un framework es un entorno de trabajo que trae resueltas una serie de tareas, automatizando así el desarrollo de cualquier aplicación. Los frameworks de Node.js se utilizan principalmente por su productividad, escalabilidad y velocidad.
+Es una libreria para crear aplicaciones web usando NodeJS, este se instala poniendo:
+PARA LEVANTAR EL SERVIDOR ES NECESARIO USAR EL METODO "LISTEN"
+
+"crear el entry point (app.js)"
+"npm init -y"
+"npm install express --save" (dentro del package.json)
+
+---------------------------------------Dentro de APP.JS---------------------------------------
+const express = require('express');
+const app = express();
+
+res.sendFile() == nos permite enviar un archivo al navegador el cual sea identificado de manera facil (debe ser una ruta absoluta / path)

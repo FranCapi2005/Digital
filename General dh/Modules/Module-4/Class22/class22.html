@@ -1,0 +1,82 @@
+Curso N.22 Curso Programación - Web Full Stack 
+
+
+*Posicionamiento (propiedad, "position") (no se superpone con flexbox, solo sirve para arreglar cosas que flexbox no puede hacer).
+
+Todos los elementos del HTML estan en un estado "static", se puede usar "position" (ej: relative, absolute, fixed, etc...) (estas posiciones se mueven con, "top", "bottom", "right" y "left"), si usamos la "position: absolute" se movera horizontal y verticalmente teniendo en cuenta las propiedades del body, segun los "top/bottom/right/left" que hayamos colocado
+
+*Z index (nos permite ajustar el orden en el que se muestran los elementos (capas), este valor puede ser positivo o negativo)
++ Valor == Altura Superior
+- Valor == Altura Inferior
+(se escribe como propiedad de la siguiente manera: "z-index: 10")
+
+*Transiciones == Cambio progresivo entre el estado actual y el cambio a hacer (PROGRESION), (siempre va en la regla de estilo que no posee el ": HOVER")
+
+((Usar la pseudoclase ":hover"))
+
+EJEMPLO N1:
+
+    .mi-elemento {
+        width: 100px;
+        height: 100px;
+        background-color: salmon;
+        transition: border-radius: 450ms <!-- Transicion de duracion de 450 mili-segundos -->
+    }
+
+    .mi-elemento:hover {
+        border-radius: 50%;
+    }
+
+EJEMPLO N2: (cambio de color al pasar el mouse por encima del cuadrado)
+
+    .mi-elemento {
+        width: 100px;
+        height: 100px;
+        background-color: salmon;
+        position: relative;
+        left: 0;
+        transition: border-radius: 450ms <!-- Transicion de duracion de 450 mili-segundos -->
+    }
+
+    .mi-elemento:hover {
+        border-radius: 50%;
+        background-color: peachpuff;
+        left: 30px;
+    }
+
+
+
+*Animaciones 
+
+ETAPAS
+
+    N1 == Creacion de animacion (se hace con la palabra reservada @keyframes)
+
+    EJEMPLO: 
+
+    @keyframes creciendo {
+        0% {
+            background-color: red;
+            <!-- Estado inicial de la animacion -->
+        } 
+
+        100% {
+            background-color: yellow;
+            height: 200px;
+            width: 200px;
+            opacity: 0.5;
+            <!-- Estado final de la animacion -->
+        }
+    } 
+
+    N2 == establecer valores y reglas las cuales haran que funcione el codigo
+
+
+animation-name                                 <!-- Establece el nombre de la animacion (se escribe luego despues de mencionar los @keyframes) -->
+
+animacion-duration                             <!-- Establece la duracion de la animacion en mili segundos -->
+
+animation-iteration-count                      <!-- Establece la cantidad de veces que se reproducira la animacion (numero entero, infinito, etc) -->
+
+animation-direction                            <!-- Establece como se vera cuando se reproduce (valor predeterminado == normal)-->
+
